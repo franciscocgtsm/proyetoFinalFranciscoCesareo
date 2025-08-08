@@ -1,0 +1,64 @@
+<!-- catalogo.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        footer img {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+         <div class="logo-container">
+        <img src="img/logo.png" alt="Logo Tienda" class="logo-img">
+    </div>
+        <h1>Catálogo de Productos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="php/carrito.php">Carrito</a></li>
+                <li><a href="php/pedidos.php">Mis Pedidos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <main>
+    <section id="productos" class="contenedor-productos">
+        <!-- Aquí se insertan los productos con fetch -->
+    </section>
+</main>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Francisco Cesáreo Mayoral Ramiro. Todos los derechos reservados.</p>
+        <img src="img/derechos_autor.png" alt="Derechos de Autor">
+    </footer>
+
+    <script>
+        // Cargar productos dinámicamente desde PHP
+        window.onload = () => {
+            fetch('php/catalogo.php')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('productos').innerHTML = html;
+                })
+                .catch(err => {
+                    document.getElementById('productos').innerHTML = "<p>Error al cargar los productos.</p>";
+                    console.error(err);
+                });
+        };
+    </script>
+</body>
+</html>
